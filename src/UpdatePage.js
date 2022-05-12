@@ -35,7 +35,7 @@ export default function UpdatePage() {
   }
 
   return (
-    <div className='update-page'>
+    <div className='update'>
       {/* on submit, call your handleSubmit function */}
       <form onSubmit={handleUpdateSubmit}>
         <h2>Add board game</h2>

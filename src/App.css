@@ -55,7 +55,6 @@ a {
   align-items: center;
 }
 
-
 form { 
   text-align: right;
   margin: 100px;
@@ -83,12 +82,17 @@ select {
   justify-content: center;
   align-items: center;
 }
-/* 
+
 .game {
+  border: solid 1px black;
+}
 
-} */
-
-.detail {
+.update {
   width: 60%;
   margin: 0 auto;
+}
+
+.create {
+  border: solid 1px black;
+  color: black;
 }

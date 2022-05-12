@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { getGames } from './services/fetch-utils';
 import Game from './Game';
+import './App.css';
+
 
 export default function ListPage() {
   // you'll need some state to hold onto the array of games
@@ -20,6 +22,7 @@ export default function ListPage() {
 
   return (
     <div className='list games'>
+      Hello
       {/* map through the games in state and render Game components */}
       {
         <Game games={games}/>

@@ -84,13 +84,17 @@ export default function App() {
             </Route>
             <Route exact path="/board-games/:id">
               {/* if there is a user, render the update page. Otherwise, redirect to the home route/auth page */}
+              { token
                 ? <UpdatePage />
                 : <Redirect to='/' />
+              }
             </Route>
             <Route exact path="/create">
               {/* if there is a user, render the create page. Otherwise, redirect to the home route/auth page */}
+              { token
                 ? <CreatePage />
                 : <Redirect to='/' />
+              }
             </Route>
           </Switch>
         </main>

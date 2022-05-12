@@ -32,6 +32,10 @@ export default function App() {
   }, []);
 
   async function handleLogout() {
+    await logout();
+    setEmail('');
+    setToken('');
+
     // call the logout function
     // clear the user in state
   }
@@ -41,6 +45,24 @@ export default function App() {
       <div className='App'>
         <header>
           {/* if there is a user in state, render out a link to the board games list, the create page, and add a button to let the user logout */}
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/create">Create</Link>
+              </li>
+              <li>
+                <Link to="/boardgames">View Boardgames</Link>
+              </li>
+              <li>
+                <p>{email}</p>
+                <p>{token}</p>
+                <button onClick={handleLogout}>Logout</button>
+              </li>
+            </ul>
+          </nav>
         </header>
         <main>
           <Switch>

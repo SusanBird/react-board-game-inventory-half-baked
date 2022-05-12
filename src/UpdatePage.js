@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { createGame } from './services/fetch-utils';
+import React, { useState, useEffect } from 'react';
+import { getGameById, updateGame } from './services/fetch-utils';
 import { useHistory } from 'react-router-dom';
 
 export default function CreatePage() {

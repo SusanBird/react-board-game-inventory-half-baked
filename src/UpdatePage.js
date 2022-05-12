@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { getGameById, updateGame } from './services/fetch-utils';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
-export default function CreatePage() {
+export default function UpdatePage() {
   // you'll need the history hook from react-router-dom to do your redirecting in the handleSubmit
-  const history = useHistory();
+  const { push } = useHistory();
+  const { id } = useParams();
   // here's the state you'll need:
   const [gameInTheForm, setGameInTheForm] = useState({
     title: '',
@@ -15,19 +16,28 @@ export default function CreatePage() {
     maxPlayers: 8
   }); 
 
-  async function handleSubmit(e) {
+  useEffect(() => {
+    async function load() {
+      const game = await getGameById(id);
+
+      setGameInTheForm(game);
+    }
+    load();
+  }, [id]);
+
+  async function handleUpdateSubmit(e) {
     e.preventDefault();
 
     // create a game
-    await createGame(gameInTheForm);
+    await updateGame(id, gameInTheForm);
     // use history.push to send the user to the list page
-    history.push('/board-games');
+    push('/board-games');
   }
 
   return (
-    <div className='create'>
+    <div className='update-page'>
       {/* on submit, call your handleSubmit function */}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleUpdateSubmit}>
         <h2>Add board game</h2>
         <label>
             Title
@@ -64,7 +74,7 @@ export default function CreatePage() {
         <label>
             Min Players
           {/* on change, set the min players in state */}
-          <input value={gameInTheForm.minPlayers} onChange={e => setGameInTheForm({
+          <input value={gameInTheForm.minPlayers} type="number" onChange={e => setGameInTheForm({
             ...setGameInTheForm,
             minPlayers: e.target.value,
           })} />
@@ -72,7 +82,7 @@ export default function CreatePage() {
         <label>
             Max Players
           {/* on change, set the max players in state */}
-          <input value={gameInTheForm.maxPlayers} onChange={e => setGameInTheForm({
+          <input value={gameInTheForm.maxPlayers} type="number" onChange={e => setGameInTheForm({
             ...setGameInTheForm,
             maxPlayers: e.target.value,
           })} />        

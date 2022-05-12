@@ -64,7 +64,7 @@ export default function CreatePage() {
         <label>
             Min Players
           {/* on change, set the min players in state */}
-          <input value={gameInTheForm.minPlayers} onChange={e => setGameInTheForm({
+          <input value={gameInTheForm.minPlayers} type="number" onChange={e => setGameInTheForm({
             ...setGameInTheForm,
             minPlayers: e.target.value,
           })} />
@@ -72,7 +72,7 @@ export default function CreatePage() {
         <label>
             Max Players
           {/* on change, set the max players in state */}
-          <input value={gameInTheForm.maxPlayers} onChange={e => setGameInTheForm({
+          <input value={gameInTheForm.maxPlayers} type="number" onChange={e => setGameInTheForm({
             ...setGameInTheForm,
             maxPlayers: e.target.value,
           })} />        

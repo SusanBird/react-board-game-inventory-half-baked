@@ -3,12 +3,12 @@ import { getUser } from './services/fetch-utils';
 import {
   BrowserRouter as Router,
   Switch,
-  NavLink,
+  Link,
   Route,
   Redirect,
 } from 'react-router-dom';
 import AuthPage from './AuthPage';
-import DetailPage from './DetailPage';
+import UpdatePage from './UpdatePage';
 import ListPage from './ListPage';
 import CreatePage from './CreatePage';
 
@@ -17,7 +17,7 @@ import { logout } from './services/fetch-utils';
 
 export default function App() {
   // You'll need to track the user in state
-  const [email, set Email] = useState();
+  const [email, setEmail] = useState();
   const [token, setToken] = useState();
   // add a useEffect to get the user and inject the user object into state on load
 
@@ -54,7 +54,7 @@ export default function App() {
                 <Link to="/create">Create</Link>
               </li>
               <li>
-                <Link to="/boardgames">View Boardgames</Link>
+                <Link to="/board-games">View Boardgames</Link>
               </li>
               <li>
                 <p>{email}</p>
@@ -68,15 +68,29 @@ export default function App() {
           <Switch>
             <Route exact path="/">
               {/* if there is a user, redirect to the board games list. Otherwise, render the auth page. Note that the AuthPage will need a function called setUser that can set the user state in App.js */}
+              {
+                token
+                  ? <Redirect to="/board-games" />
+                  : <AuthPage setEmail={setEmail} setToken={setToken} />
+              }
             </Route>
             <Route exact path="/board-games">
               {/* if there is a user, render the board games list. Otherwise, redirect to the home route/auth page */}
+              {
+                token
+                  ? <ListPage />
+                  : <Redirect to='/' />
+              }
             </Route>
             <Route exact path="/board-games/:id">
-              {/* if there is a user, render the detail page. Otherwise, redirect to the home route/auth page */}
+              {/* if there is a user, render the update page. Otherwise, redirect to the home route/auth page */}
+                ? <UpdatePage />
+                : <Redirect to='/' />
             </Route>
             <Route exact path="/create">
               {/* if there is a user, render the create page. Otherwise, redirect to the home route/auth page */}
+                ? <CreatePage />
+                : <Redirect to='/' />
             </Route>
           </Switch>
         </main>

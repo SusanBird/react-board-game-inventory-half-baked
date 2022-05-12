@@ -17,8 +17,19 @@ import { logout } from './services/fetch-utils';
 
 export default function App() {
   // You'll need to track the user in state
-
+  const [email, set Email] = useState();
+  const [token, setToken] = useState();
   // add a useEffect to get the user and inject the user object into state on load
+
+  useEffect(() => {
+    const user = getUser();
+
+    if (user) {
+      setToken(user.access_token);
+      setEmail(user.user.email);
+    }
+
+  }, []);
 
   async function handleLogout() {
     // call the logout function

@@ -30,44 +30,58 @@ export default function AuthPage({ setEmail, setToken }) {
 
     setEmail(email);
     setToken(access_token);
-  
   }
     
   async function handleSignUp(e) {
     e.preventDefault();
     // sign the user up using the form state
-
+    await signUp(signUpEmail, signUpPassword);
     // set the user in App.js state using the correct prop callback. If you did the ternary right in App.js, this should automatically redirect the user to the board game list
+    const { 
+      access_token, 
+      user: { 
+        email,
+      } 
+    } = getUser();
+
+    setEmail(email);
+    setToken(access_token);
   }
 
   return (
     <div className='auth'>
       <h1><em>Boardzo</em></h1>
       {/* on submit, sign the user up using the function defined above */}
-      <form>
+      <form onSubmit={handleSignUp}> 
         <label>
             Email
           {/* on change, update the form state for email */}
-          <input required type="email" name="email" />
+          <input value={signUpEmail} onChange={e => setSignUpEmail(e.target.value)} />
         </label>
         <label>
             Password
           {/* on change, update the form state for password */}
-          <input required type="password" name="password" />
+          <input type="password" value={signUpPassword} onChange={e => setSignUpPassword(e.target.value)} />
         </label>
         <button>Sign Up</button>
       </form>
       {/* on submit, sign the user in using the function defined above */}
-      <form>
+      <form onSubmit={handleSignIn}>
         <label>
             Email
           {/* on change, update the form state for email */}
-          <input required type="email" name="email" />
+          <input value={signInEmail} onChange={e => setSignInFormData({
+            email: e.target.value,
+            password: signInPassword,
+          })} />
         </label>
         <label>
             Password
           {/* on change, update the form state for password */}
-          <input required type="password" name="password" />
+          <input type="password" value={signInPassword} onChange={e => setSignInFormData({
+            email: signInEmail,
+            password: e.target.value,
+          })} />
         </label>
         <button>Sign In</button>
       </form>

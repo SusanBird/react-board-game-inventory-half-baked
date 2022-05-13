@@ -22,7 +22,7 @@ export default function ListPage() {
 
   return (
     <div className='list games'>
-      Hello
+      List of Games:
       {/* map through the games in state and render Game components */}
       {
         <Game games={games}/>

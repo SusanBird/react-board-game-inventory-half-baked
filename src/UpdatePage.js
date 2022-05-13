@@ -38,7 +38,7 @@ export default function UpdatePage() {
     <div className='update'>
       {/* on submit, call your handleSubmit function */}
       <form onSubmit={handleUpdateSubmit}>
-        <h2>Add board game</h2>
+        <h2>Update Game</h2>
         <label>
             Title
           {/* on change, set the title in state */}

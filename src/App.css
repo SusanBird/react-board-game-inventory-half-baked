@@ -21,13 +21,22 @@ a {
 }
 
 .App header a {
-  margin: 10px;
+  margin: 3px;
   background-color: white;
   border-radius: 20px;
   padding: 15px;
   cursor: pointer;
   display: flex;
   flex-direction: row;
+}
+
+.App header ul {
+  display: flex;
+  list-style: none;
+}
+
+.App header li {
+  text-decoration: none;
 }
 
 .App header a:hover {

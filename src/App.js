@@ -58,7 +58,8 @@ export default function App() {
               </li>
               <li>
                 <p>{email}</p>
-                <p>{token}</p>
+              </li>
+              <li>
                 <button onClick={handleLogout}>Logout</button>
               </li>
             </ul>

@@ -33,7 +33,7 @@ export async function logout() {
 export async function createGame(game){
   const response = await client
     .from('board_games')
-    .insert([game]);
+    .insert(game);
 
   return checkError(response);
 }
@@ -41,7 +41,7 @@ export async function createGame(game){
 export async function updateGame(id, newGame) {
   const response = await client
     .from('board_games')
-    .update([newGame])
+    .update(newGame)
     .match({ id });
 
   return checkError(response);

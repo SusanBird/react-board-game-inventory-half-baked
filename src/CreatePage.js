@@ -12,9 +12,13 @@ export default function CreatePage() {
     genre: '',
     designer: '',
     description: '',
-    minPlayers: 2,
-    maxPlayers: 8
+    min_players: 2,
+    max_players: 8
   }); 
+
+  // eslint-disable-next-line no-console
+  // console.log(gameInTheForm.min_players);
+  // CHANGES ARE GOING THROUGH IN CONSOLE FROM HERE
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -29,22 +33,22 @@ export default function CreatePage() {
     <div className='create'>
       {/* on submit, call your handleSubmit function */}
       <form onSubmit={handleSubmit}>
-        <h2>Add board game</h2>
+        Add board game
         <label>
             Title
           {/* on change, set the title in state */}
           <input value={gameInTheForm.title} onChange={e => setGameInTheForm({
-            ...setGameInTheForm,
+            ...gameInTheForm,
             title: e.target.value,
           })} />
         </label>
         <label>
             Genre
           {/* on change, set the genre in state */}
-          <select onChange={e => setGameInTheForm({
+          <select value={gameInTheForm.genre} onChange={e => setGameInTheForm({
             ...gameInTheForm,
             genre: e.target.value,
-          })} value={gameInTheForm.genre}>
+          })}>
             <option>Tile-laying</option>
             <option>Economic</option>
             <option>War</option>
@@ -58,35 +62,35 @@ export default function CreatePage() {
             Designer
           {/* on change, set the designer in state */}
           <input value={gameInTheForm.designer} onChange={e => setGameInTheForm({
-            ...setGameInTheForm,
+            ...gameInTheForm,
             designer: e.target.value,
           })} />        
         </label>
         <label>
             Min Players
           {/* on change, set the min players in state */}
-          <input value={gameInTheForm.minPlayers} type="number" onChange={e => setGameInTheForm({
-            ...setGameInTheForm,
-            minPlayers: e.target.value,
+          <input value={gameInTheForm.min_players} type="number" onChange={e => setGameInTheForm({
+            ...gameInTheForm,
+            min_players: e.target.value,
           })} />
         </label>
         <label>
             Max Players
           {/* on change, set the max players in state */}
-          <input value={gameInTheForm.maxPlayers} type="number" onChange={e => setGameInTheForm({
-            ...setGameInTheForm,
-            maxPlayers: e.target.value,
+          <input value={gameInTheForm.max_players} type="number" onChange={e => setGameInTheForm({
+            ...gameInTheForm,
+            max_players: e.target.value,
           })} />        
         </label>
         <label>
             Description
           {/* on change, set the description in state */}
           <input value={gameInTheForm.description} onChange={e => setGameInTheForm({
-            ...setGameInTheForm,
+            ...gameInTheForm,
             description: e.target.value,
           })} />        
         </label>
-        <button>Create game</button>
+        <button>Create Game</button>
       </form>
     </div>
   );

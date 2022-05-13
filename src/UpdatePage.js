@@ -12,9 +12,12 @@ export default function UpdatePage() {
     genre: '',
     designer: '',
     description: '',
-    minPlayers: 2,
-    maxPlayers: 8
+    min_players: 2,
+    max_players: 8
   }); 
+
+  // eslint-disable-next-line no-console
+  // console.log(gameInTheForm.min_players); 
 
   useEffect(() => {
     async function load() {
@@ -50,10 +53,10 @@ export default function UpdatePage() {
         <label>
             Genre
           {/* on change, set the genre in state */}
-          <select onChange={e => setGameInTheForm({
+          <select value={gameInTheForm.genre} onChange={e => setGameInTheForm({
             ...gameInTheForm,
             genre: e.target.value,
-          })} value={gameInTheForm.genre}>
+          })}>
             <option>Tile-laying</option>
             <option>Economic</option>
             <option>War</option>
@@ -74,17 +77,17 @@ export default function UpdatePage() {
         <label>
             Min Players
           {/* on change, set the min players in state */}
-          <input value={gameInTheForm.minPlayers} type="number" onChange={e => setGameInTheForm({
+          <input value={gameInTheForm.min_players} type="number" onChange={e => setGameInTheForm({
             ...setGameInTheForm,
-            minPlayers: e.target.value,
+            min_players: e.target.value,
           })} />
         </label>
         <label>
             Max Players
           {/* on change, set the max players in state */}
-          <input value={gameInTheForm.maxPlayers} type="number" onChange={e => setGameInTheForm({
+          <input value={gameInTheForm.max_players} type="number" onChange={e => setGameInTheForm({
             ...setGameInTheForm,
-            maxPlayers: e.target.value,
+            max_players: e.target.value,
           })} />        
         </label>
         <label>

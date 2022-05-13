@@ -33,7 +33,7 @@ export async function logout() {
 export async function createGame(game){
   const response = await client
     .from('board_games')
-    .insert(game);
+    .insert([game]);
 
   return checkError(response);
 }
@@ -50,7 +50,7 @@ export async function updateGame(id, newGame) {
 export async function getGames() {
   const response = await client
     .from('board_games')
-    .select();
+    .select('*');
 
 
   return checkError(response);    
@@ -59,7 +59,7 @@ export async function getGames() {
 export async function getGameById(id) {
   const response = await client
     .from('board_games')
-    .select()
+    .select('*')
     .match({ id })
     .single();
 

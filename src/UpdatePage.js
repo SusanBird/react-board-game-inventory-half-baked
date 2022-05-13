@@ -46,7 +46,7 @@ export default function UpdatePage() {
             Title
           {/* on change, set the title in state */}
           <input value={gameInTheForm.title} onChange={e => setGameInTheForm({
-            ...setGameInTheForm,
+            ...gameInTheForm,
             title: e.target.value,
           })} />
         </label>
@@ -70,7 +70,7 @@ export default function UpdatePage() {
             Designer
           {/* on change, set the designer in state */}
           <input value={gameInTheForm.designer} onChange={e => setGameInTheForm({
-            ...setGameInTheForm,
+            ...gameInTheForm,
             designer: e.target.value,
           })} />        
         </label>
@@ -78,7 +78,7 @@ export default function UpdatePage() {
             Min Players
           {/* on change, set the min players in state */}
           <input value={gameInTheForm.min_players} type="number" onChange={e => setGameInTheForm({
-            ...setGameInTheForm,
+            ...gameInTheForm,
             min_players: e.target.value,
           })} />
         </label>
@@ -86,7 +86,7 @@ export default function UpdatePage() {
             Max Players
           {/* on change, set the max players in state */}
           <input value={gameInTheForm.max_players} type="number" onChange={e => setGameInTheForm({
-            ...setGameInTheForm,
+            ...gameInTheForm,
             max_players: e.target.value,
           })} />        
         </label>
@@ -94,7 +94,7 @@ export default function UpdatePage() {
             Description
           {/* on change, set the description in state */}
           <input value={gameInTheForm.description} onChange={e => setGameInTheForm({
-            ...setGameInTheForm,
+            ...gameInTheForm,
             description: e.target.value,
           })} />        
         </label>

@@ -16,16 +16,27 @@ a {
 
 .App header {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: left;
+  align-items:flex-start;
 }
 
 .App header a {
-  margin: 10px;
+  margin: 3px;
   background-color: white;
   border-radius: 20px;
   padding: 15px;
   cursor: pointer;
+  display: flex;
+  flex-direction: row;
+}
+
+.App header ul {
+  display: flex;
+  list-style: none;
+}
+
+.App header li {
+  text-decoration: none;
 }
 
 .App header a:hover {
@@ -45,14 +56,13 @@ a {
   padding: 50px;
 }
 
-.auth, .list, .detail, .create {
+.auth, .list, .update, .create {
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-
 
 form { 
   text-align: right;
@@ -83,10 +93,15 @@ select {
 }
 
 .game {
-
+  border: solid 1px black;
 }
 
-.detail {
+.update {
   width: 60%;
   margin: 0 auto;
+}
+
+.create {
+  border: solid 1px black;
+  color: black;
 }

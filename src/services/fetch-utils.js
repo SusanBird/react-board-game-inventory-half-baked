@@ -7,16 +7,20 @@ export function getUser() {
 
 // signs an new user in and puts an auth token in local storage in the browser
 export async function signUp(email, password){
-  const response = await client.auth.signUp({ email, password });
+  const { user, error } = await client.auth.signUp({ email, password });
   
-  return response.user;
+  if (error) return error;
+
+  return user;
 }
 
 // signs an existing user in and puts an auth token in local storage in the browser
 export async function signIn(email, password){
-  const response = await client.auth.signIn({ email, password });
+  const { user, error } = await client.auth.signIn({ email, password });
+  
+  if (error) return error;
 
-  return response.user;
+  return user;
 }
 
 // removes the token from local storage and redirects the user home
@@ -34,22 +38,28 @@ export async function createGame(game){
   return checkError(response);
 }
 
+export async function updateGame(id, newGame) {
+  const response = await client
+    .from('board_games')
+    .update(newGame)
+    .match({ id });
+
+  return checkError(response);
+}
 
 export async function getGames() {
   const response = await client
     .from('board_games')
-    .select();
+    .select('*');
 
 
   return checkError(response);    
 }
 
-
-
 export async function getGameById(id) {
   const response = await client
     .from('board_games')
-    .select()
+    .select('*')
     .match({ id })
     .single();
 

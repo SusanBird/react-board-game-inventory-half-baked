@@ -2,10 +2,10 @@ import { Link } from 'react-router-dom';
 import './App.css';
 
 
-export default function Game({ games }) {
+export default function Game({ game }) {
   return (
     // be sure this component is wrapped in a react-router link that takes the user to the correct detail page
-    games.map((game, i) => <Link key={game.title + i} to={`/board-games/${game.id}`}>
+    <Link to={`/board-games/${game.id}`}>
       <div className='game'>
         <h3>{game.title}</h3>
         <p>A {game.genre} game by designer {game.designer}</p>
@@ -13,5 +13,5 @@ export default function Game({ games }) {
         <p>{game.description}</p>
       </div>
     </Link>)
-  );
+  ;
 }
